@@ -1,0 +1,180 @@
+WindowManager:
+    LoginWindow:
+    CreateAccount
+    MainWindow:
+
+
+<LoginWindow>:
+    name: "login"
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "books_bg2.jpeg"
+
+    FloatLayout:
+
+        Label:
+            text: "Book Journal"
+            font_size: 50
+            size_hint: 0.2, 0.05
+            pos_hint: {"x":0.4, "y":0.8}
+
+
+        Label:
+            text: "Username/Email:"
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.2, "y":0.6}
+
+
+
+        TextInput:
+            id: username
+            multiline: False
+            size_hint: 0.3, None
+            height: 30
+            pos_hint: {"x":0.4, "y":0.6}
+
+        Label:
+            text: "Password:"
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.23, "y":0.5}
+
+        TextInput:
+            id: password
+            multiline: False
+            size_hint: 0.3, None
+            height: 30
+            pos_hint: {"x":0.4, "y":0.5}
+
+        Button:
+            text: "Login"
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.3, "y":0.4}
+
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Create Account"
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.5, "y":0.4}
+
+            on_release:
+                app.root.current = "createAccount"
+                root.manager.transition.direction = "left"
+
+<CreateAccount>:
+    name: "createAccount"
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "books_bg2.jpeg"
+
+    FloatLayout:
+        Label:
+            text: "Create Account"
+            font_size: 50
+            size_hint: 0.2, 0.05
+            pos_hint: {"x":0.4, "y":0.8}
+
+        Label:
+            text: "Your email:"
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.2, "y":0.7}
+
+        TextInput:
+            id: new_email
+            multiline: False
+            size_hint: 0.3, None
+            height: 30
+            pos_hint: {"x":0.4, "y":0.7}
+
+        Label:
+            text: "Username:"
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.2, "y":0.6}
+
+        TextInput:
+            id: new_username
+            multiline: False
+            size_hint: 0.3, None
+            height: 30
+            pos_hint: {"x":0.4, "y":0.6}
+
+        Label:
+            text: "Firstname:"
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.15, "y":0.5}
+
+        TextInput:
+            id: new_firstname
+            multiline: False
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.3, "y":0.5}
+
+        Label:
+            text: "Surname:"
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.45, "y":0.5}
+
+        TextInput:
+            id: new_surname
+            multiline: False
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.6, "y":0.5}
+
+        Label:
+            text: "Password:"
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.2, "y":0.4}
+
+        TextInput:
+            id: new_password
+            multiline: False
+            size_hint: 0.3, None
+            height: 30
+            pos_hint: {"x":0.4, "y":0.4}
+
+        Button:
+            text: "Back to Login"
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.3, "y":0.3}
+
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "right"
+
+        Button:
+            text: "Create Account"
+            size_hint: 0.2, None
+            height: 30
+            pos_hint: {"x":0.5, "y":0.3}
+
+
+<MainWindow>:
+    name: "main"
+
+    Button:
+        text: "Go back"
+
+        on_release:
+            app.root.current = "login"
+            root.manager.transition.direction = "right"
+
