@@ -54,8 +54,8 @@ WindowManager:
             pos_hint: {"x":0.3, "y":0.4}
 
             on_release:
+                root.login(root.ids.username.text, root.ids.password.text)
                 app.root.current = "main"
-                root.manager.transition.direction = "left"
 
         Button:
             text: "Create Account"

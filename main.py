@@ -4,6 +4,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 import sqlite3
 
+
 # Create a connection to the user.db database
 with sqlite3.connect("users.db") as db:
     cursor = db.cursor()
@@ -31,14 +32,18 @@ def create_account(email, u_name, f_name, s_name, pwd):
     db.commit()
     print("user created")
 
-def test(name):
-    print(name)
 
 class LoginWindow(Screen):
-    pass
+
+    def login(self, u_name, pwd):
+
+        find_user = "SELECT * FROM users WHERE username = '{}' AND password = '{}'".format(u_name, pwd)
+        cursor.execute(find_user)
+        results = cursor.fetchall()
+        print(results)
+
 
 class CreateAccount(Screen):
-
 
     def create_account(self, email, u_name, f_name, s_name, pwd):
         """Create new user account, add to the users database"""
@@ -50,15 +55,19 @@ class CreateAccount(Screen):
 
         cursor.execute(insert_data)
         db.commit()
+
         print("user created")
+
 
 class MainWindow(Screen):
     pass
+
 
 class WindowManager(ScreenManager):
     pass
 
 
+# Load kv format file
 kv = Builder.load_file("my.kv")
 
 class MyApp(App):
